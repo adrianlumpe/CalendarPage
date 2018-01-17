@@ -1,3 +1,4 @@
 body {
-    background: black;
+    background-image: url("Images/wood_bkgrnd.jpg");
+    background-size: cover;
 }
