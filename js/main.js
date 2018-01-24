@@ -43,11 +43,6 @@ jQuery(document).ready(function($){
 			this.element.addClass('js-full');
 			this.placeEvents();
 			this.element.hasClass('modal-is-open') && this.checkEventModal();
-		} else if(this.element.hasClass('modal-is-open')){
-			//on a mobile version with modal open - need to resize/move modal window
-			this.element.removeClass('loading');
-		} else {
-			this.element.removeClass('loading');
 		}
 	};
 

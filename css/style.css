@@ -253,10 +253,6 @@ Main Components
     /* reset style */
     margin-right: 0;
   }
-  .cd-schedule .events .single-event.selected-event {
-    /* the .selected-event class is added when an user select the event */
-    visibility: hidden;
-  }
 }
 
 @media only screen and (min-width: 1000px) {
@@ -265,12 +261,6 @@ Main Components
     width: calc(100% - 60px);
     margin-left: 60px;
   }
-}
-
-.cd-schedule.loading .events .single-event {
-  /* the class .loading is added by default to the .cd-schedule element
-	   it is removed as soon as the single events are placed in the schedule plan (using javascript) */
-  opacity: 0;
 }
 
 .cd-schedule .event-name,
