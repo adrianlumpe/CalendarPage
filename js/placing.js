@@ -36,8 +36,8 @@ function addEvents() {
     }
 
     events = document.getElementsByClassName('single-event');
-    console.dir(events);
-    console.dir(eventArray);
+    //console.dir(events);
+    //console.dir(eventArray);
 
 
     //console.log('this happens.')
@@ -48,7 +48,6 @@ function placeEvents() {
     for (var i = 0; i < events.length; i++) {
         var topoffset = (eventArray[i].starthour - 9) * 100 + eventArray[i].startminute * 100/60 - 1;
         var elemheight = ((eventArray[i].endhour * 60 + eventArray[i].endmin) - (eventArray[i].starthour*60 + eventArray[i].startminute))*100/60
-        console.log(elemheight);
         events[i].style.top = topoffset + 'px';
         events[i].style.height = elemheight + 'px';
     }
