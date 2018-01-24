@@ -10,6 +10,11 @@
 </head>
 
 <body>
+<button id="authorize-button" style="display: none;">Authorize</button>
+<button id="signout-button" style="display: none;">Sign Out</button>
+
+<pre id="content"></pre>
+
 <div class="cd-schedule loading">
 	<div class="timeline">
 		<ul>
@@ -49,8 +54,12 @@
 
 </div> <!-- .cd-schedule -->
 <script src="js/placing.js"></script>
+<script src="js/calapi.js"></script>
 
+<script async defer src="https://apis.google.com/js/api.js"
+		onload="this.onload=function(){};handleClientLoad()"
+		onreadystatechange="if (this.readyState === 'complete') this.onload()">
+</script>
 
- <!-- Resource jQuery -->
 </body>
 </html>

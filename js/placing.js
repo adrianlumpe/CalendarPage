@@ -52,3 +52,4 @@ function placeEvents() {
         events[i].style.height = elemheight + 'px';
     }
 }
+
