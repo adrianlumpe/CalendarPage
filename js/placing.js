@@ -3,6 +3,8 @@ var events;
 var container = document.getElementById('event-container');
 
 //********************************************************************
+
+
 var CLIENT_ID = '546406238697-jfa2r91nieo8sq1aagr3dmnirqt74mmv.apps.googleusercontent.com';
 var API_KEY = 'AIzaSyB01CIeKocaGnaZVcHM2gZ_zhYFF7t6z_c';
 
@@ -35,6 +37,30 @@ function el(starth, startmin, endh, endmin, name, dataevent) {
     this.endmin = endmin;
     this.name = name;
     this.dataevent = dataevent;
+}
+
+function setOcc() {
+    var topdiv = document.getElementsByClassName('top-info');
+    console.dir(topdiv);
+    if(activeEvent()){
+        topdiv[0].style.backgroundColor = '#2d7215';
+    } else{
+        topdiv[0].childNodes[0].innerHTML += '<span class="occ"> (aktuell besetzt)</span>';
+        topdiv[0].style.backgroundColor = '#8e1318';
+    }
+}
+
+function activeEvent(){
+    for (var i = 0; i < eventArray.length; i++) {
+        var c = new Date();
+        var cmid = c.getHours()*60 + c.getMinutes(); // current minutes into day
+        var esmid = eventArray[i].starthour*60 + eventArray[i].startminute;
+        var eemid = eventArray[i].endhour*60 + eventArray[i].endmin;
+        if(cmid > esmid && cmid < eemid){
+            return false;
+        }
+    }
+    return true;
 }
 
 
@@ -128,30 +154,22 @@ function handleSignoutClick(event) {
 }
 
 /**
- * Append a pre element to the body containing the given message
- * as its text node. Used to display the results of the API call.
- *
- * @param {string} message Text to be placed in pre element.
- */
-function appendPre(message) {
-    var pre = document.getElementById('content');
-    var textContent = document.createTextNode(message + '\n');
-    pre.appendChild(textContent);
-}
-
-/**
  * Print the summary and start datetime/date of the next ten events in
  * the authorized user's calendar. If no events are found an
  * appropriate message is printed.
  */
 function listUpcomingEvents() {
     var events;
+    var da_midn = new Date();
+    da_midn.setHours(0);
     var da = new Date();
     da.setDate(da.getDate() + 1);
-
+    da.setHours(0);
+    console.log(da);
     gapi.client.calendar.events.list({
+        //'calendarId': '4ft.de_3338363435393232383037@resource.calendar.google.com',
         'calendarId': '4ft.de_3935373337323934323134@resource.calendar.google.com',
-        'timeMin': (new Date()).toISOString(),
+        'timeMin': (da_midn.toISOString()),
         'timeMax': da.toISOString(),
         'showDeleted': false,
         'singleEvents': true,
@@ -159,7 +177,6 @@ function listUpcomingEvents() {
         'orderBy': 'startTime'
     }).then(function(response) {
         events = response.result.items;
-        //appendPre('Upcoming events:');
 
         if (events.length >= 0) {
             for (var i = 0; i < events.length; i++) {
@@ -168,20 +185,11 @@ function listUpcomingEvents() {
                 var d_end = parseISOString(ev.end.dateTime);
 
                 eventArray.push(new el(d_start.getHours(), d_start.getMinutes(), d_end.getHours(), d_end.getMinutes(), ev.summary, 'event-1'));
-                console.dir(eventArray);
-
-                //var event = events[i];
-                //var when = event.start.dateTime;
-                //if (!when) {
-                //    when = event.start.date;
-                //}
-                //appendPre(event.summary + ' (' + when + ')')
             }
             addAndPlaceRedBar();
             addEvents();
             placeEvents();
-        } else {
-            appendPre('No upcoming events found.');
+            setOcc();
         }
     });
 

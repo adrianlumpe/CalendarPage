@@ -15,14 +15,9 @@ body {
   font-size: 1.6rem;
   font-family: "Source Sans Pro", sans-serif;
   color: #222222;
-  background-color: white;
-  background-image: url("../Images/wood_bkgrnd.jpg");
+  background-color: #4d4d4d;
+  background-image: url("../Images/4ft_Praesentation_Bullenkopf.jpg");
   background-size: cover;
-}
-
-a {
-  color: #A2B9B2;
-  text-decoration: none;
 }
 
 /* -------------------------------- 
@@ -33,7 +28,7 @@ Main Components
 .cd-schedule {
   position: relative;
   margin: 2em 0;
-  background-color: grey;
+  background-color: #666666;
   border: 1px solid white; !important;
 }
 
@@ -85,14 +80,19 @@ Main Components
     left: 0;
     width: 100%;
     height: 1px;
-    background: #404040;
+    background: white;
   }
   .cd-schedule .timeline li:last-of-type::after {
     display: none;
   }
   .cd-schedule .timeline li span {
+    font-size: 1.8rem;
+    font-weight: normal;
+    color: white;
     display: none;
     margin-left: 10px;
+    opacity: .7;
+    letter-spacing: 0.9px;
   }
 }
 
@@ -127,6 +127,8 @@ Main Components
 }
 
 .cd-schedule .events .top-info > span {
+  color: white;
+  font-size: 3rem;
   display: inline-block;
   line-height: 1.2;
   margin-bottom: 10px;
@@ -172,16 +174,15 @@ Main Components
   margin-right: 5%;
 }
 
-.cd-schedule .events .single-event a {
-  display: block;
-  height: 100%;
-  padding: .8em;
-}
-
 @media only screen and (min-width: 550px) {
   .cd-schedule .events .single-event {
     width: 40%;
   }
+}
+
+.occ {
+  opacity: .7;
+  font-size: 2rem;
 }
 
 @media only screen and (min-width: 800px) {
@@ -274,6 +275,7 @@ Main Components
 
 .cd-schedule .event-name {
   font-size: 2.4rem;
+  z-index: 20;
 }
 
 .redbar {
@@ -281,7 +283,7 @@ Main Components
   width: 100%;
   background-color: red;
   position: absolute;
-  z-index: 10;
+  z-index: 5;
 }
 
 @media only screen and (min-width: 800px) {
@@ -292,6 +294,7 @@ Main Components
 
 .cd-schedule .event-date {
   /* they are not included in the the HTML but added using JavScript */
+  display: inline;
   font-size: 1.4rem;
   opacity: .7;
   line-height: 1.2;
