@@ -42,7 +42,7 @@ Main Components
   .cd-schedule {
     width: 40%;
     max-width: 1400px;
-    margin: 2em auto;
+    margin: 4em auto;
   }
   .cd-schedule::after {
     clear: both;
@@ -273,9 +273,9 @@ Main Components
   -moz-osx-font-smoothing: grayscale;
 }
 
-.cd-schedule .event-name {
+.event-name {
   font-size: 2.4rem;
-  z-index: 20;
+  z-index: 10;
 }
 
 .redbar {
