@@ -16,7 +16,7 @@ body {
   font-family: "Source Sans Pro", sans-serif;
   color: #222222;
   background-color: #4d4d4d;
-  background-image: url("../Images/4ft_Praesentation_Bullenkopf.jpg");
+  background-image: url("../../Images/4ft_Praesentation_Bullenkopf.jpg");
   background-size: cover; }
 
 /* --------------------------------
@@ -36,6 +36,8 @@ body {
   .cd-schedule .timeline {
     display: none; }
   .cd-schedule .events {
+    width: calc(100% - 60px);
+    margin-left: 60px;
     position: relative;
     z-index: 1; }
     .cd-schedule .events .events-group {
@@ -223,11 +225,8 @@ body {
   width: 100%;
   background-color: red;
   position: absolute;
-  z-index: 5; }
+  z-index: 4; }
 
-@media only screen and (min-width: 800px) {
-  .cd-schedule .event-name {
-    font-size: 2rem; } }
 .cd-schedule .event-date {
   /* they are not included in the the HTML but added using JavScript */
   display: inline;
