@@ -1,0 +1,258 @@
+/* --------------------------------
+ *
+ *Primary style
+ *
+ *--------------------------------
+
+*
+  box-sizing: border-box
+  &::after, &::before
+    box-sizing: border-box
+
+html
+  font-size: 62.5%
+
+body
+  font-size: 1.6rem
+  font-family: "Source Sans Pro", sans-serif
+  color: #222222
+  background-color: #4d4d4d
+  background-image: url("../Images/4ft_Praesentation_Bullenkopf.jpg")
+  background-size: cover
+
+/* --------------------------------
+ *
+ *Main Components
+ *
+ *--------------------------------
+
+.cd-schedule
+  position: relative
+  margin: 2em 0
+  background-color: #666666
+  border: 1px solid white
+  &::before
+    /* never visible - this is used in js to check the current MQ
+    content: 'mobile'
+    display: none
+  .timeline
+    display: none
+  .events
+    position: relative
+    z-index: 1
+    .events-group
+      margin-bottom: 30px
+    .top-info
+      width: 100%
+      padding: 0 5%
+      > span
+        color: white
+        font-size: 3rem
+        display: inline-block
+        line-height: 1.2
+        margin-bottom: 10px
+        font-weight: bold
+    .events-group > ul
+      position: relative
+      padding: 0 5%
+      /* force its children to stay on one line
+      display: -webkit-box
+      display: -ms-flexbox
+      display: flex
+      overflow-x: scroll
+      -webkit-overflow-scrolling: touch
+      &::after
+        /* never visible - used to add a right padding to .events-group > ul
+        display: inline-block
+        content: '-'
+        width: 1px
+        height: 100%
+        opacity: 0
+        color: transparent
+    .single-event
+      /* force them to stay on one line
+      -ms-flex-negative: 0
+      flex-shrink: 0
+      float: left
+      height: 150px
+      width: 70%
+      max-width: 300px
+      box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.2)
+      margin-right: 20px
+      -webkit-transition: opacity .2s, background .2s
+      transition: opacity .2s, background .2s
+      &:last-of-type
+        margin-right: 5%
+
+@media only screen and (min-width: 800px)
+  .cd-schedule
+    width: 40%
+    max-width: 1400px
+    margin: 4em auto
+    &::after
+      clear: both
+      content: ""
+      display: block
+    &::before
+      content: 'desktop'
+
+@media only screen and (min-width: 800px)
+  .cd-schedule .timeline
+    display: block
+    position: absolute
+    top: 0
+    left: 0
+    height: 100%
+    width: 100%
+    padding-top: 50px
+    li
+      position: relative
+      height: 50px
+      &::after
+        /* this is used to create the table horizontal lines
+        content: ''
+        position: absolute
+        bottom: 0
+        left: 0
+        width: 100%
+        height: 1px
+        background: white
+      &:last-of-type::after
+        display: none
+      span
+        font-size: 1.8rem
+        font-weight: normal
+        color: white
+        display: none
+        margin-left: 10px
+        opacity: .7
+        letter-spacing: 0.9px
+
+@media only screen and (min-width: 1000px)
+  .cd-schedule .timeline li
+    &::after
+      width: calc(100% - 60px)
+      left: 60px
+    span
+      display: inline-block
+      -webkit-transform: translateY(-50%)
+      -ms-transform: translateY(-50%)
+      transform: translateY(-50%)
+    &:nth-of-type(2n) span
+      display: none
+
+@media only screen and (min-width: 550px)
+  .cd-schedule .events .single-event
+    width: 40%
+
+.occ
+  opacity: .7
+  font-size: 2rem
+
+@media only screen and (min-width: 800px)
+  .cd-schedule .events
+    float: left
+    width: 100%
+    .events-group
+      width: 100%
+      float: left
+      border: 1px solid #EAEAEA
+      /* reset style
+      margin-bottom: 0
+      &:not(:first-of-type)
+        border-left-width: 0
+    .top-info
+      /* vertically center its content
+      display: table
+      height: 50px
+      border-bottom: 1px solid #EAEAEA
+      /* reset style
+      padding: 0
+      > span
+        /* vertically center inside its parent
+        display: table-cell
+        vertical-align: middle
+        padding: 0 .5em
+        text-align: center
+        /* reset style
+        font-weight: normal
+        margin-bottom: 0
+    .events-group > ul
+      height: 950px
+      /* reset style
+      display: block
+      overflow: visible
+      padding: 0
+      &::after
+        clear: both
+        content: ""
+        display: block
+        /* reset style
+        display: none
+    .single-event
+      padding: 1.2em
+      position: absolute
+      z-index: 3
+      /* top position and height will be set using js
+      width: calc(100% + 2px)
+      left: -1px
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), inset 0 -3px 0 rgba(0, 0, 0, 0.2)
+      /* reset style
+      -ms-flex-negative: 1
+      flex-shrink: 1
+      height: auto
+      max-width: none
+      margin-right: 0
+      &:last-of-type
+        /* reset style
+        margin-right: 0
+
+@media only screen and (min-width: 1000px)
+  .cd-schedule .events
+    /* 60px is the .timeline element width
+    width: calc(100% - 60px)
+    margin-left: 60px
+
+.cd-schedule
+  .event-name, .event-date
+    display: block
+    color: white
+    font-weight: bold
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+
+.event-name
+  font-size: 2.4rem
+  z-index: 10
+  overflow: hidden
+  width: 370px
+  height: 20px
+
+.redbar
+  height: 3px
+  width: 100%
+  background-color: red
+  position: absolute
+  z-index: 5
+
+@media only screen and (min-width: 800px)
+  .cd-schedule .event-name
+    font-size: 2rem
+
+.cd-schedule
+  .event-date
+    /* they are not included in the the HTML but added using JavScript
+    display: inline
+    font-size: 1.4rem
+    opacity: .7
+    line-height: 1.2
+    margin-bottom: .2em
+  .single-event[data-event="event-1"], [data-event="event-1"] .header-bg
+    /* this is used to set a background color for the event and the modal window
+    background: #577F92
+  .single-event[data-event="event-2"], [data-event="event-2"] .header-bg
+    background: #443453
+  .single-event[data-event="event-3"], [data-event="event-3"] .header-bg
+    background: #A2B9B2
+  .single-event[data-event="event-4"], [data-event="event-4"] .header-bg
+    background: #f6b067
