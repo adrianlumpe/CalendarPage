@@ -5,8 +5,8 @@ var container = document.getElementById('event-container');
 //********************************************************************
 
 
-var CLIENT_ID = '114325445334423435672';
-var API_KEY = 'MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCg+KKMlK6O1EaT\\nlnyPA0AKDFHdtMZYwivRLiugmmdB23oKmSjeGTMNQ4blw3XgWmGRR4TnRnLjV2VI\\n61k3EOr4eDh6h7i3eUo5+U7vVriHhpftCVGOWj2q9KCynT3hy0ezbYEksV+hU7Hn\\nCSke+KDhBK4Qljki09FB01YyODpaqrjeLwz7Wdc5BYoDRkl5ipDZD4knzhpHQlu5\\nrmcA3wHqqQqTMACWQAoGZAgfgZcN5YiGyZRmUSA5bpe5lWF8F6sld+wVhosPQFi/\\nzUdXD3HkLdVQsyVEhN7r2Hu6nyC0+T1CouZMQ8zM4keWCvqsFo8EYRGmdBPPpWez\\nax5kfMxLAgMBAAECggEAFizfv7wafASpoFqtLXUbf7GIyaEbaKN/Lnb3faLSXL6O\\nhnfpAF0PrQvDa/2hodbxn/ZD9ym7rq6d07jQS9y3HKRQgNjCTUxBOdFVhXU4leWo\\nd6K+qydVXYALxJoS1KXmFRrIcrSYtvx1Ap3pc0x5upCkJhbRJ4dvSWvYG7JRSlII\\nb9vSFMQ90D0wFh0pXtCv4EMnXptD1qLNE0CXYR9KdXJTEP8JJyHV71Hj14zgDI4u\\npePlJKbkms1/xEPKTqkslcBmOqM+gwun/GQfc0xvZCZwIwSOYsPO4DLr7kh4jFyX\\ntx8S3lc1XTNo+8pmdKx5MdE1KYF5xXFQrdcoJXOvYQKBgQDaygO+4a3A5+fmkGNM\\nPXqWgDu7xyFLSbvlJV7uM1vjoROujEWk+96ObPfi/Is5tm1LHcafAeY1vo/OcMhg\\nQQ0I6ucxY3gl+d6IXML9+fQWtmDgo7h2DvVz03u+c5yH8XRhpF+tmUDoRCJ+8/fc\\n6Yfcmt7qk9Lvg7ftf03jfO8UkQKBgQC8WUEEdGZOuuPXZXe3n5GNCglzhHXOSMVt\\n6Rx/7ZTv7yVhOc9jSFSnqKnhD+zW1NccTHr07E3YN+lKNm4EhDjYfkS86mdIusXo\\nKoQJ69THi5XhwmL7cnsFsmSxrJ+rmKktvi/iL3DrTxTEtuLNLpLg2YTT+zfl/j3Q\\nRqnCPGgRGwKBgAQAtCbW3CXuWDjIpXhsm4SLXgxmbT6CX9SmZWE4QVMdzE1iNZf6\\nH609Yx+c/TMWGlPIfKzGDR8omFrvh0rzhbiHC6nEpxsSwjZ+c/bPjt6ngYg6lpJa\\nXbU7xkTKuq9mBHoQ1stHRX+6V2M5NWyuPRUVJEToZXCKWWAX9yXVUE5xAoGABZTH\nfnBMj8yt77YMBB7wWzOO8CNeskwpvYYI2CmcHjgB7Y2e/ZwpFgbDce3c4MjRzv7d\nLeDKtbuCaDaQsAWTAadMNiTkBp2yO5z26KxaU8dpG5V9BWJxDswoe7NXz+foK3jV\nRmiNeguP2/xnYBkfNRZ8/yMUlvYfsspFQYI0uz0CgYEAzYRauy86MTJ2rNnwalgI\nSsYizlhEOVf7KzJVaNleEwKiYD5bHS4k/NbMphOGRO93dI7WuLCLZogLegRoWuz7\nBwjOe+oubrYy5NYDM2Bx18mIdXT5ABZF7t92dIUuOTu4Ng/TqwL1KNy3K/tQCXzV\nG0id8C+1a+pfEutKBMms7Yk=';
+var CLIENT_ID = '546406238697-jfa2r91nieo8sq1aagr3dmnirqt74mmv.apps.googleusercontent.com';
+var API_KEY = 'AIzaSyB01CIeKocaGnaZVcHM2gZ_zhYFF7t6z_c';
 
 // Array of API discovery doc URLs for APIs used by the quickstart
 var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
@@ -161,10 +161,11 @@ function handleSignoutClick(event) {
 function listUpcomingEvents() {
     var events;
     var da_midn = new Date();
-    da_midn.setHours(0);
+    da_midn.setHours(0,0,0,0);
+    console.log(da_midn.toISOString());
     var da = new Date();
-    da.setDate(da.getDate() + 1);
-    da.setHours(0);
+    da.setDate(da_midn.getDate() + 1);
+    da.setHours(0,0,0,0);
     console.log(da);
     gapi.client.calendar.events.list({
         //'calendarId': '4ft.de_3338363435393232383037@resource.calendar.google.com',
@@ -183,6 +184,9 @@ function listUpcomingEvents() {
                 var ev = events[i];
                 var d_start = parseISOString(ev.start.dateTime);
                 var d_end = parseISOString(ev.end.dateTime);
+                // correct hours cuz parseISOString ignores time-zone
+                d_start.setHours(d_start.getHours()-1);
+                d_end.setHours(d_end.getHours()-1);
 
                 eventArray.push(new el(d_start.getHours(), d_start.getMinutes(), d_end.getHours(), d_end.getMinutes(), ev.summary, 'event-1'));
             }

@@ -37,10 +37,10 @@ jQuery(document).ready(function($){
 	};
 
 	SchedulePlan.prototype.scheduleReset = function() {
-		if(!this.element.hasClass('js-full') ) {
+		if(!this.element.hasClass('Javascript-full') ) {
 			//in this case you are on a desktop version (first load or resize from mobile)
 			this.eventSlotHeight = this.eventsGroup.eq(0).children('.top-info').outerHeight();
-			this.element.addClass('js-full');
+			this.element.addClass('Javascript-full');
 			this.placeEvents();
 			this.element.hasClass('modal-is-open') && this.checkEventModal();
 		}
