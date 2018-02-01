@@ -18,7 +18,7 @@ var SCOPES = "https://www.googleapis.com/auth/calendar.readonly";
 var authorizeButton = document.getElementById('authorize-button');
 var signoutButton = document.getElementById('signout-button');
 //********************************************************************
-
+console.log(javascript_array);
 
 function addAndPlaceRedBar() {
     var bar = document.createElement('div');
@@ -27,6 +27,9 @@ function addAndPlaceRedBar() {
     var d = new Date();
     var os = (d.getHours()-9)*100 + d.getMinutes()*100/60 - 2;
     bar.style.top = os + 'px';
+    if(os < 0 || os > 19*50){
+        bar.style.visibility = 'hidden';
+    }
     container.appendChild(bar);
 }
 

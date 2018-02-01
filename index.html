@@ -52,7 +52,15 @@
 		</ul>
 	</div>
 
-</div> <!-- .cd-schedule -->
+</div>
+<?php echo 'quickstart.php';?>
+<script type='text/javascript'>
+    <?php
+		$php_array = array('abc','def','ghi');
+    	$js_array = json_encode($php_array);
+    	echo "var javascript_array = ". $js_array . ";\n";
+		?>
+</script>
 <script src="Javascript/placing.js"></script>
 
 <script async defer src="https://apis.google.com/js/api.js"
