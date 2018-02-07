@@ -82,11 +82,7 @@ function addEvents() {
     }
 
     events = document.getElementsByClassName('single-event');
-    //console.dir(events);
-    //console.dir(eventArray);
 
-
-    //console.log('this happens.')
 
 }
 
@@ -194,9 +190,9 @@ function listUpcomingEvents() {
                 eventArray.push(new el(d_start.getHours(), d_start.getMinutes(), d_end.getHours(), d_end.getMinutes(), ev.summary, 'event-1'));
             }
 
-            addEvents();
-            placeEvents();
-            setOcc();
+            //addEvents();
+            //placeEvents();
+            //setOcc();
             addAndPlaceRedBar();
         }
     });

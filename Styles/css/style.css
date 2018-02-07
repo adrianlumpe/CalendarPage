@@ -15,8 +15,8 @@ body {
   font-size: 1.6rem;
   font-family: "Source Sans Pro", sans-serif;
   color: #222222;
-  background-color: #4d4d4d;
-  background-image: url("../../Images/4ft_Praesentation_Bullenkopf.jpg");
+  background-color: black;
+  /*background-image: url("../../Images/4ft_Praesentation_Bullenkopf.jpg") */
   background-size: cover; }
 
 /* --------------------------------
